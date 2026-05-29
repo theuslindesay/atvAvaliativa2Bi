@@ -12,6 +12,9 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.root.CompareTag("Player"))
+            return;
+
         ZombieHealth zombie = collision.gameObject.GetComponent<ZombieHealth>();
 
         if (zombie != null)

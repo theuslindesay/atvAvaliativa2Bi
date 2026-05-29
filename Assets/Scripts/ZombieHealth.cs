@@ -3,8 +3,6 @@ using UnityEngine;
 public class ZombieHealth : MonoBehaviour
 {
     public int maxHealth = 100;
-    public int scoreValue = 10;
-
     private int currentHealth;
 
     void Start()
@@ -12,9 +10,9 @@ public class ZombieHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int damage)
     {
-        currentHealth -= amount;
+        currentHealth -= damage;
 
         if (currentHealth <= 0)
         {
@@ -24,7 +22,6 @@ public class ZombieHealth : MonoBehaviour
 
     void Die()
     {
-        ScoreManager.instance.AddScore(scoreValue);
         Destroy(gameObject);
     }
 }
