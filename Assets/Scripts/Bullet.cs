@@ -3,23 +3,26 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public int damage = 25;
-    public float lifeTime = 3f;
 
     void Start()
     {
-        Destroy(gameObject, lifeTime);
+        Destroy(gameObject, 3f);
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.root.CompareTag("Player"))
-            return;
+        Debug.Log("Bala colidiu com: " + collision.gameObject.name);
 
-        ZombieHealth zombie = collision.gameObject.GetComponent<ZombieHealth>();
+        ZombieHealth zombie = collision.gameObject.GetComponentInParent<ZombieHealth>();
 
         if (zombie != null)
         {
+            Debug.Log("ZombieHealth encontrado, aplicando dano");
             zombie.TakeDamage(damage);
+        }
+        else
+        {
+            Debug.Log("ZombieHealth NÃO encontrado");
         }
 
         Destroy(gameObject);

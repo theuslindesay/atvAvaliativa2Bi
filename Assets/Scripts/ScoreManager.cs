@@ -15,17 +15,20 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        UpdateUI();
+        UpdateScoreUI();
     }
 
-    public void AddScore(int value)
+    public void AddScore(int points)
     {
-        score += value;
-        UpdateUI();
+        score += points;
+        UpdateScoreUI();
     }
 
-    void UpdateUI()
+    void UpdateScoreUI()
     {
-        scoreText.text = "Score: " + score;
+        if (scoreText != null)
+        {
+            scoreText.text = "Pontos: " + score;
+        }
     }
 }
